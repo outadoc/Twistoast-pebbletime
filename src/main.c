@@ -1,5 +1,6 @@
 #include <pebble.h>
 #include "structures.h"
+#include "stop_info.h"
 
 static Window *s_main_window;
 static MenuLayer *s_menu_layer;
@@ -35,7 +36,7 @@ static void menu_draw_row_callback(GContext* ctx, const Layer *cell_layer, MenuI
 }
 
 static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
-
+	show_stop_info();
 }
 
 static void main_window_load(Window *window) {
