@@ -1,0 +1,24 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "outadoc",
+    "longName": "Twistoast Time",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "Twistoast",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
+    "uuid": "49664da5-f3f9-47fd-87d0-574bb281e864",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
