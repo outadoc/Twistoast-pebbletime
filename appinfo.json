@@ -7,7 +7,14 @@
     "longName": "Twistoast Time",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/pbl_icon.png",
+                "menuIcon": true,
+                "name": "IMAGE_ICON_TWISTO",
+                "type": "png"
+            }
+        ]
     },
     "sdkVersion": "3",
     "shortName": "Twistoast",
