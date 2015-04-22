@@ -91,3 +91,29 @@ void get_stop_name(BusStop *stops, uint8_t nb_stops, uint16_t line_index, uint16
 		bus_index++;
 	}
 }
+
+// Gets the bus stop at the specified line index and stop index. 
+BusStop* get_stop_at_indexes(BusStop *stops, uint8_t nb_stops, uint16_t line_index, uint16_t stop_index) {
+	uint8_t i;
+	uint8_t nb_sections = 0;
+	uint8_t bus_index = 0;
+	
+	char *last_line_id = NULL;
+	
+	for(i = 0; i < nb_stops; i++) {
+		// If the new row has a different line than the previous
+		if(last_line_id == NULL || strcmp(stops[i].line_id, last_line_id) != 0) {
+			last_line_id = stops[i].line_id;
+			nb_sections++;
+			bus_index = 0;
+		}
+		
+		if(nb_sections - 1 == line_index && bus_index == stop_index) {
+				return &stops[i];
+		}
+		
+		bus_index++;
+	}
+	
+	return NULL;
+}

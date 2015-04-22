@@ -1,4 +1,5 @@
 #pragma once
-	
-void show_stop_info(void);
+#include "structures.h"
+
+void show_stop_info(BusStop *stop);
 void hide_stop_info(void);

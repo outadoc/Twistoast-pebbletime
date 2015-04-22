@@ -36,7 +36,8 @@ static void menu_draw_row_callback(GContext* ctx, const Layer *cell_layer, MenuI
 }
 
 static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
-	show_stop_info();
+	BusStop* stop = get_stop_at_indexes(bus_stops_list, nb_bus_stops, cell_index->section, cell_index->row);
+	show_stop_info(stop);
 }
 
 static void main_window_load(Window *window) {
@@ -51,7 +52,7 @@ static void main_window_load(Window *window) {
 		.stop_name = "Academie",
 		.line_name = "Tram",
 		.dir_name = "Ifs Grace de Dieu",
-		.color = 0,
+		.color = 0xef3b17,
 		.is_watched = 0
 	};
 	
@@ -63,7 +64,7 @@ static void main_window_load(Window *window) {
 		.stop_name = "Bernières",
 		.line_name = "Tram",
 		.dir_name = "Caen Campus 2",
-		.color = 0,
+		.color = 0xef3b17,
 		.is_watched = 0
 	};
 	
@@ -74,8 +75,8 @@ static void main_window_load(Window *window) {
 		.network_code = 147,
 		.stop_name = "Anciennes Boucheries",
 		.line_name = "Lianes 3",
-		.dir_name = "Whatever",
-		.color = 0,
+		.dir_name = "Herouville St-Clair",
+		.color = 0x5bd85b,
 		.is_watched = 0
 	};
 	
