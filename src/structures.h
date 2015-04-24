@@ -1,4 +1,5 @@
 #pragma once
+#include <pebble.h>
 
 // Message types
 #define MSG_ERROR 0x00
