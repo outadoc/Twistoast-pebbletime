@@ -22,11 +22,11 @@ static void initialise_ui(void) {
 	layer_set_update_proc(header, header_update_callback);
 	
 	//set text placement
-	lbl_line = text_layer_create(GRect(7, 3, DISPLAY_WIDTH - 13, 32));
-	lbl_stop = text_layer_create(GRect(7, 33, DISPLAY_WIDTH - 13, 30));
-	lbl_direction = text_layer_create(GRect(7, 55, DISPLAY_WIDTH - 15, 30));
-	lbl_schedule1 = text_layer_create(GRect(10, 97, DISPLAY_WIDTH - 15, 28));
-	lbl_schedule2 = text_layer_create(GRect(10, 125, DISPLAY_WIDTH - 15, 28));
+	lbl_line = text_layer_create(GRect(8, 6, DISPLAY_WIDTH - 16, 32));
+	lbl_stop = text_layer_create(GRect(8, 35, DISPLAY_WIDTH - 16, 30));
+	lbl_direction = text_layer_create(GRect(8, 58, DISPLAY_WIDTH - 16, 30));
+	lbl_schedule1 = text_layer_create(GRect(10, 99, DISPLAY_WIDTH - 10, 28));
+	lbl_schedule2 = text_layer_create(GRect(10, 127, DISPLAY_WIDTH - 10, 28));
 	
 	//set text font
 	text_layer_set_font(lbl_line, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
@@ -68,7 +68,7 @@ void header_update_callback(Layer *layer, GContext *ctx) {
 		graphics_context_set_fill_color(ctx, GColorBlack);
 	#endif
 	
-	graphics_fill_rect(ctx, GRect(2, 2, DISPLAY_WIDTH - 6, 88), 5, GCornersAll);
+	graphics_fill_rect(ctx, GRect(3, 5, DISPLAY_WIDTH - 6, 88), 5, GCornersAll);
 }
 
 
