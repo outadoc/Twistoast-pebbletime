@@ -82,7 +82,7 @@ static void main_window_load(Window *window) {
 	
 	Layer *window_layer = window_get_root_layer(window);
 	GRect bounds = layer_get_frame(window_layer);
-
+	
 	// Create the menu layer
 	s_menu_layer = menu_layer_create(bounds);
 	

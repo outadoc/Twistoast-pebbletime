@@ -13,7 +13,7 @@ static BusStop *bus_stop;
 
 static void initialise_ui(void) {
   s_window = window_create();
-  window_set_fullscreen(s_window, true);
+	window_set_fullscreen(s_window, true);
 	
 	Layer *window_layer = window_get_root_layer(s_window);
 	
@@ -25,8 +25,8 @@ static void initialise_ui(void) {
 	lbl_line = text_layer_create(GRect(7, 3, DISPLAY_WIDTH - 13, 32));
 	lbl_stop = text_layer_create(GRect(7, 33, DISPLAY_WIDTH - 13, 30));
 	lbl_direction = text_layer_create(GRect(7, 55, DISPLAY_WIDTH - 15, 30));
-	lbl_schedule1 = text_layer_create(GRect(10, 92, DISPLAY_WIDTH - 15, 28));
-	lbl_schedule2 = text_layer_create(GRect(10, 120, DISPLAY_WIDTH - 15, 28));
+	lbl_schedule1 = text_layer_create(GRect(10, 97, DISPLAY_WIDTH - 15, 28));
+	lbl_schedule2 = text_layer_create(GRect(10, 125, DISPLAY_WIDTH - 15, 28));
 	
 	//set text font
 	text_layer_set_font(lbl_line, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
@@ -45,6 +45,12 @@ static void initialise_ui(void) {
 	text_layer_set_background_color(lbl_line, GColorClear);
 	text_layer_set_background_color(lbl_stop, GColorClear);
 	text_layer_set_background_color(lbl_direction, GColorClear);
+	
+	#ifndef PBL_COLOR
+		text_layer_set_text_color(lbl_line, GColorWhite);
+		text_layer_set_text_color(lbl_stop, GColorWhite);
+		text_layer_set_text_color(lbl_direction, GColorWhite);
+	#endif
 }
 
 static void destroy_ui(void) {
@@ -59,7 +65,7 @@ void header_update_callback(Layer *layer, GContext *ctx) {
 	#ifdef PBL_COLOR
   	graphics_context_set_fill_color(ctx, GColorFromHEX(bus_stop->color));
 	#else
-		graphics_context_set_fill_color(ctx, GColorWhite);
+		graphics_context_set_fill_color(ctx, GColorBlack);
 	#endif
 	
 	graphics_fill_rect(ctx, GRect(2, 2, DISPLAY_WIDTH - 6, 88), 5, GCornersAll);
@@ -80,6 +86,7 @@ void show_stop_info(BusStop *stop) {
   window_set_window_handlers(s_window, (WindowHandlers) {
     .unload = handle_window_unload,
   });
+	
   window_stack_push(s_window, true);
 }
 
