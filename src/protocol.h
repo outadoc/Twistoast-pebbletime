@@ -1,4 +1,5 @@
 #pragma once
+#include "structures.h"
 	
 // Message types
 #define MSG_ERROR 0x00
@@ -28,7 +29,9 @@
 #define KEY_NEXT_DEPARTURE_2 0x0D
 #define KEY_INDEX 0x0E
 	
-send_get_stops_message();
-send_watch_message(BusStop *stop);
-send_unwatch_message(BusStop *stop);
-send_get_schedule_message(BusStop *stop);
+typedef uint8_t msgkey_t;
+	
+void send_get_stops_message();
+void send_watch_message(BusStop *stop);
+void send_unwatch_message(BusStop *stop);
+void send_get_schedule_message(BusStop *stop);
