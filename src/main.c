@@ -1,6 +1,9 @@
 #include <pebble.h>
+
+#include "main.h"
 #include "structures.h"
 #include "stop_info.h"
+#include "protocol.h"
 
 static Window *s_main_window;
 static MenuLayer *s_menu_layer;
@@ -38,6 +41,14 @@ static void menu_draw_row_callback(GContext* ctx, const Layer *cell_layer, MenuI
 static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
 	BusStop* stop = get_stop_at_indexes(bus_stops_list, nb_bus_stops, cell_index->section, cell_index->row);
 	show_stop_info(stop);
+}
+
+BusStop** get_bus_stops_list() {
+	return &bus_stops_list;
+}
+
+void reload_menu_data() {
+	menu_layer_reload_data(s_menu_layer);
 }
 
 static void main_window_load(Window *window) {
@@ -113,6 +124,14 @@ static void init() {
 		.load = main_window_load,
 		.unload = main_window_unload,
 	});
+	
+	// Register callbacks
+	app_message_register_inbox_received(inbox_received_callback);
+	app_message_register_inbox_dropped(inbox_dropped_callback);
+	app_message_register_outbox_failed(outbox_failed_callback);
+	app_message_register_outbox_sent(outbox_sent_callback);
+	
+	app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
 	
 	window_stack_push(s_main_window, true);
 }
